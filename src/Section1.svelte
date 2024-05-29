@@ -6,17 +6,15 @@
     export let id;
 
     function drawSunburst(d3, data) {
-        // Specify the chart’s dimensions.
-        const width = document.getElementById("sunburst").clientWidth;
-        const height = width;
+        const container = document.getElementById("sunburst");
+        const width = container.clientWidth;
+        const height = container.clientHeight;
         const radius = Math.min(width, height) / 6;
-        
-        // Create the color scale.
+
         const color = d3.scaleOrdinal(
             d3.quantize(d3.interpolateRainbow, data.children.length + 1),
         );
 
-        // Compute the layout.
         const hierarchy = d3
             .hierarchy(data)
             .sum((d) => d.value)
@@ -26,7 +24,6 @@
         );
         root.each((d) => (d.current = d));
 
-        // Create the arc generator.
         const arc = d3
             .arc()
             .startAngle((d) => d.x0)
@@ -36,17 +33,14 @@
             .innerRadius((d) => d.y0 * radius)
             .outerRadius((d) => Math.max(d.y0 * radius, d.y1 * radius - 1));
 
-        const container = document.getElementById("sunburst");
-
         const svg = d3
             .select("#sunburst")
             .append("svg")
-            .attr("width", 750)
-            .attr("height", 750)
-            .attr("viewBox", [-375, -375, 750, 750])
-            .style("font", "10px sans-serif");
+            .attr("width", width)
+            .attr("height", height)
+            .attr("viewBox", [-width / 2, -height / 2, width, height])
+            .style("font", "11px sans-serif");
 
-        // Append the arcs.
         const path = svg
             .append("g")
             .selectAll("path")
@@ -64,7 +58,6 @@
             )
             .attr("d", (d) => arc(d.current));
 
-        // Make them clickable if they have children.
         path.filter((d) => d.children)
             .style("cursor", "pointer")
             .on("click", clicked);
@@ -100,7 +93,6 @@
             .attr("pointer-events", "all")
             .on("click", clicked);
 
-        // Handle zoom on click.
         function clicked(event, p) {
             parent.datum(p.parent || root);
 
@@ -128,9 +120,6 @@
 
             const t = svg.transition().duration(750);
 
-            // Transition the data on all arcs, even the ones that aren’t visible,
-            // so that if this transition is interrupted, entering arcs will start
-            // the next transition from the desired position.
             path.transition(t)
                 .tween("data", (d) => {
                     const i = d3.interpolate(d.current, d.target);
@@ -187,19 +176,43 @@
 </script>
 
 <section {id} class="section">
-    <h1>Section 1</h1>
-    <div id="sunburst"></div>
+    <div class="left">
+        <h1>Explore Unicorns 🔎</h1>
+        <p>Now here is the chance for you to explore unicorns on your own.</p>
+    </div>
+    <div id="sunburst" class="right"></div>
 </section>
 
 <style>
     .section {
-        height: 100vh;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        height: 100vh;
+        width: 100vw;
+        padding: 5%;
+        box-sizing: border-box;
         background: #fff;
         scroll-snap-align: start;
+    }
+
+    .left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-right: 20px;
+        box-sizing: border-box;
+    }
+
+    .right {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin-right: 15%;
     }
 
     #sunburst {
@@ -207,20 +220,39 @@
         height: 100%;
         max-width: 90vmin;
         max-height: 90vmin;
-        display: block;
-        justify-content: center;
-        align-items: center;
     }
 
-    html, body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
+    h1 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 2.5em;
+        margin-bottom: 0.5em;
     }
 
-    main {
-        width: 100%;
-        height: 100%;
+    p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.2em;
+        color: #666;
+    }
+
+    @media (max-width: 768px) {
+        .section {
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .left, .right {
+            flex: none;
+            width: 100%;
+            text-align: center;
+            padding: 0;
+        }
+
+        .left {
+            margin-bottom: 20px;
+        }
+
+        .right {
+        margin-right: 0;
+        }
     }
 </style>
