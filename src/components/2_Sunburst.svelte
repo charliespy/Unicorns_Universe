@@ -174,7 +174,7 @@
 </script>
 
 <main>
-    <section class="section">
+    <!-- <section class="section"> -->
         <div class="left">
             <h1>Explore Unicorns 🔎</h1>
             <p>
@@ -182,46 +182,45 @@
             </p>
         </div>
         <div id="sunburst" class="right"></div>
-    </section>
+    <!-- </section> -->
 </main>
 
 <style>
-    .section {
+    main {
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 100vh;
         width: 100vw;
-        padding: 5%;
+        padding: 3%;
         box-sizing: border-box;
-        /* background: #fff; */
         scroll-snap-align: start;
     }
 
     .left {
-        flex: 1;
+        flex: 0.8;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
-        padding-right: 20px;
+        align-items: center;
         box-sizing: border-box;
+        margin: 5%;
     }
 
     .right {
-        flex: 1;
+        flex: 1.2;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
-        margin-right: 15%;
+        margin-right: 5%;
     }
 
     #sunburst {
         width: 100%;
         height: 100%;
-        max-width: 90vmin;
-        max-height: 90vmin;
+        /* max-width: 90vmin;
+        max-height: 90vmin; */
     }
 
     h1 {

@@ -15,10 +15,6 @@
         }
     };
 
-    onMount(() => {
-        scrollToSection(0);
-    });
-
     const nextSection = () => {
         if (currentSection < sections.length - 1) {
             scrollToSection(currentSection + 1);
@@ -30,19 +26,52 @@
             scrollToSection(currentSection - 1);
         }
     };
+
+    onMount(() => {
+        scrollToSection(0);
+
+        const sectionElements = sections.map((id) =>
+            document.getElementById(id),
+        );
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.5, // Adjust this threshold as needed
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    currentSection = sections.indexOf(entry.target.id);
+                }
+            });
+        }, options);
+
+        sectionElements.forEach((section) => {
+            observer.observe(section);
+        });
+
+        return () => {
+            sectionElements.forEach((section) => {
+                observer.unobserve(section);
+            });
+        };
+    });
+
+    // $: console.log(`Current section index: ${currentSection}, ID: ${sections[currentSection]}`);
 </script>
 
 <main>
     <section class="section" id="section1">
-        <Welcome/>
+        <Welcome />
     </section>
 
     <section class="section" id="section2">
-        <Section1/>
+        <Section1 />
     </section>
 
     <section class="section" id="section3">
-        <Section2/>
+        <Section2 />
     </section>
 
     <div class="controls">
@@ -64,16 +93,10 @@
 </main>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        overflow: hidden; /* Prevent body scrolling */
-    }
-
     main {
         height: 100vh;
         width: 100vw;
-        overflow-y: hidden; /* Hide scroll bar */
+        overflow-y: scroll;
         position: relative;
         display: flex;
         flex-direction: column;
