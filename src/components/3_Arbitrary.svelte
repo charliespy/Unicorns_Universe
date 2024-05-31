@@ -1,12 +1,12 @@
 <script>
-    export let id;
 </script>
 
-<section {id} class="section">
-    <h1>Section 2</h1>
-    <br>
-    <p>Content for section 2</p>
-</section>
+<main>
+    <section class="section">
+        <h1>Section 2</h1>
+        <p>Content for section 2</p>
+    </section>
+</main>
 
 <style>
     .section {
@@ -15,7 +15,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: lightseagreen;
         scroll-snap-align: start;
         padding: 20px;
         box-sizing: border-box;
@@ -28,8 +27,15 @@
         }
     }
 
-    h1, p {
-        margin: 0;
-        color: #fff;
+    h1 {
+        font-family: "Roboto", sans-serif;
+        font-size: 2.5em;
+        margin-bottom: 0.5em;
+    }
+
+    p {
+        font-family: "Roboto", sans-serif;
+        font-size: 1.2em;
+        color: #666;
     }
 </style>

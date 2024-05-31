@@ -1,9 +1,7 @@
 <script>
     import { onMount } from "svelte";
-    import { data_sunburst } from "./data/data_sunburst.js";
+    import { data_sunburst } from "../data/data_sunburst.js";
     import * as d3 from "d3";
-
-    export let id;
 
     function drawSunburst(d3, data) {
         const container = document.getElementById("sunburst");
@@ -175,13 +173,17 @@
     });
 </script>
 
-<section {id} class="section">
-    <div class="left">
-        <h1>Explore Unicorns 🔎</h1>
-        <p>Now here is the chance for you to explore unicorns on your own.</p>
-    </div>
-    <div id="sunburst" class="right"></div>
-</section>
+<main>
+    <section class="section">
+        <div class="left">
+            <h1>Explore Unicorns 🔎</h1>
+            <p>
+                Now here is the chance for you to explore unicorns on your own.
+            </p>
+        </div>
+        <div id="sunburst" class="right"></div>
+    </section>
+</main>
 
 <style>
     .section {
@@ -192,7 +194,7 @@
         width: 100vw;
         padding: 5%;
         box-sizing: border-box;
-        background: #fff;
+        /* background: #fff; */
         scroll-snap-align: start;
     }
 
@@ -223,13 +225,13 @@
     }
 
     h1 {
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
         font-size: 2.5em;
         margin-bottom: 0.5em;
     }
 
     p {
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
         font-size: 1.2em;
         color: #666;
     }
@@ -240,7 +242,8 @@
             padding: 10px;
         }
 
-        .left, .right {
+        .left,
+        .right {
             flex: none;
             width: 100%;
             text-align: center;
@@ -252,7 +255,7 @@
         }
 
         .right {
-        margin-right: 0;
+            margin-right: 0;
         }
     }
 </style>

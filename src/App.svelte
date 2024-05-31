@@ -1,16 +1,16 @@
 <script>
-    import { onMount } from 'svelte';
-    import Welcome from "./Welcome.svelte";
-    import Section1 from "./Section1.svelte";
-    import Section2 from "./Section2.svelte";
+    import { onMount } from "svelte";
+    import Welcome from "./components/1_Welcome.svelte";
+    import Section1 from "./components/2_Sunburst.svelte";
+    import Section2 from "./components/3_Arbitrary.svelte";
 
     let currentSection = 0;
-    const sections = ['section1', 'section2', 'section3'];
+    const sections = ["section1", "section2", "section3"];
 
     const scrollToSection = (index) => {
         const section = document.getElementById(sections[index]);
         if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+            section.scrollIntoView({ behavior: "smooth" });
             currentSection = index;
         }
     };
@@ -34,20 +34,32 @@
 
 <main>
     <section class="section" id="section1">
-        <Welcome id="section1" />
+        <Welcome/>
     </section>
+
     <section class="section" id="section2">
-        <Section1 id="section2" />
+        <Section1/>
     </section>
+
     <section class="section" id="section3">
-        <Section2 id="section3" />
+        <Section2/>
     </section>
+
     <div class="controls">
-        <button on:click={prevSection} disabled={currentSection === 0}>Previous</button>
+        <button on:click={prevSection} disabled={currentSection === 0}
+            >Previous</button
+        >
         <div class="progress-bar">
-            <div class="progress" style="height: {((currentSection + 1) / sections.length) * 100}%"></div>
+            <div
+                class="progress"
+                style="height: {((currentSection + 1) / sections.length) *
+                    100}%"
+            ></div>
         </div>
-        <button on:click={nextSection} disabled={currentSection === sections.length - 1}>Next</button>
+        <button
+            on:click={nextSection}
+            disabled={currentSection === sections.length - 1}>Next</button
+        >
     </div>
 </main>
 
@@ -67,6 +79,7 @@
         flex-direction: column;
         align-items: center;
         scroll-snap-type: y mandatory;
+        background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     }
 
     .section {
@@ -76,7 +89,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0px; 
+        padding: 0px;
         box-sizing: border-box;
     }
 
@@ -85,10 +98,6 @@
             padding: 10px;
             flex-direction: column; /* Stack content vertically on small screens */
         }
-    }
-
-    main {
-        background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     }
 
     .section:nth-child(odd) {
@@ -113,7 +122,7 @@
     .controls button {
         margin: 5px 0;
         padding: 10px 20px;
-        background-color: #007BFF;
+        background-color: #007bff;
         color: white;
         border: none;
         border-radius: 5px;
@@ -135,10 +144,12 @@
 
     .progress {
         width: 100%;
-        background-color: #007BFF;
+        height: 0;
+        top: 0;
+        background-color: #007bff;
         border-radius: 5px;
         position: absolute;
-        bottom: 0;
+        transform-origin: top;
     }
 
     @media (max-width: 768px) {
@@ -147,7 +158,7 @@
             top: auto;
             bottom: 10px;
             transform: translateX(50%);
-            flex-direction: row; /* Arrange controls horizontally */
+            flex-direction: row;
         }
 
         .controls button {
