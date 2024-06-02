@@ -55,7 +55,7 @@
 
 <main>
     <div class="content">
-        <h1>Which Country's Unicorn Companies Showcase Greater Industry Diversity?</h1>
+        <h1>Which Country Exhibits Greater Industry Diversity Among Its Unicorn Companies?</h1>
         <h2>Assessing the Industrial Variety in Startups Valued Over One Billion Dollars Across Nations</h2>
         <p>
             Explore the factors that contribute to a startup becoming a unicorn.
