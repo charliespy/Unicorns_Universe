@@ -1,11 +1,12 @@
 <script>
     import { onMount } from "svelte";
     import Welcome from "./components/1_Welcome.svelte";
-    import Section1 from "./components/2_Sunburst.svelte";
-    import Section2 from "./components/3_Arbitrary.svelte";
+    import Section1 from "./components/2_Page.svelte";
+    import Section2 from "./components/3_Page.svelte";
+    import Sunburst from "./components/4_Sunburst.svelte";
 
     let currentSection = 0;
-    const sections = ["section1", "section2", "section3"];
+    const sections = ["section1", "section2", "section3", "section4"];
 
     const scrollToSection = (index) => {
         const section = document.getElementById(sections[index]);
@@ -72,6 +73,10 @@
 
     <section class="section" id="section3">
         <Section2 />
+    </section>
+
+    <section class="section" id="section4">
+        <Sunburst />
     </section>
 
     <div class="controls">
