@@ -77,13 +77,13 @@
         align-items: center;
         position: relative;
         overflow: hidden;
-        /* background: #fff; */
     }
 
     .content {
         position: absolute;
         z-index: 10;
         text-align: center;
+        margin: 8%;
     }
 
     h1 {

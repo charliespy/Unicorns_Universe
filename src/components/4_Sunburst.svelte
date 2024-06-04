@@ -174,15 +174,11 @@
 </script>
 
 <main>
-    <!-- <section class="section"> -->
-        <div class="left">
-            <h1>Explore Unicorns 🔎</h1>
-            <p>
-                Now here is the chance for you to explore unicorns on your own.
-            </p>
-        </div>
-        <div id="sunburst" class="right"></div>
-    <!-- </section> -->
+    <div class="left">
+        <h1>Explore Unicorns 🔎</h1>
+        <p>Now here is the chance for you to explore unicorns on your own.</p>
+    </div>
+    <div id="sunburst" class="right"></div>
 </main>
 
 <style>
