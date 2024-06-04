@@ -1,10 +1,19 @@
 <script>
-</script>
+    import { onMount } from 'svelte';
+    import { data_chart } from '../data/data_chart';
+  
+    onMount(async () => {  
+      window['vegaEmbed']('#vis', data_chart, {actions: false}).then(result => {
+          console.log(result);
+      }).catch(console.error);
+    });
+  </script>
 
 <main>
     <section class="section">
-        <h1>Section 3</h1>
-        <p>Content for section 3</p>
+        <div id="vis"></div>
+        <!-- <h1>Section 3</h1>
+        <p>Content for section 3</p> -->
     </section>
 </main>
 
