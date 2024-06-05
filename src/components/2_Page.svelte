@@ -101,9 +101,10 @@
 <main>
   <section class="section">
       <div class="text-container">
-          <h1>Distribution of Industries within Each Country with more than 5 Unicorns as a Percentage</h1>
-          <h2>According to the calculation on this metric, France is the most diverse country, while Switzerland is the most homogeneous country for industry distribution of unicorns.</h2>
-          <p>This graph shows the percentage distribution of different industries within each country. The countries are ordered by the percentage of their most dominant industry, with the smallest dominant industry on top. Hover over the bars to see the industry names.</p>
+          <h1>Percentage Distribution of Unicorn Industries 🌍</h1>
+          <p>This graph shows the percentage distribution of different industries within each country with <strong>more than 5 unicorns</strong>. The countries are ordered by the percentage of their most dominant industry, with the smallest dominant industry on top.</p>
+          <p>Hover over the bars to see the industry names.</p>
+          <h2>France 🇫🇷 is the most diverse country, while Switzerland 🇨🇭 is the most homogeneous country for industry distribution of unicorns.</h2>
         </div>
       <div id="chart" class="chart-container"></div>
       <div id="tooltip" class="tooltip"></div>
@@ -125,6 +126,7 @@
 
   .text-container {
       width: 40%;
+      margin-left: 5%;
   }
 
   .chart-container {
@@ -147,18 +149,23 @@
       font-family: "Roboto", sans-serif;
       font-size: 2.0em;
       margin-bottom: 0.5em;
+      
   }
 
   h2 {
       font-family: "Roboto", sans-serif;
       font-size: 1.3em;
       margin-bottom: 0.5em;
+      line-height: 1.5;
+
   }
 
   p {
       font-family: "Roboto", sans-serif;
-      font-size: 1.1em;
+      font-size: 1.2em;
       color: #666;
+      line-height: 1.5;
+
   }
 
   svg {
