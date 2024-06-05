@@ -177,6 +177,8 @@
     <div class="left">
         <h1>Explore Unicorns 🔎</h1>
         <p>Now here is the chance for you to explore unicorns on your own.</p>
+        <p>Click a node to zoom in 🔍➕,</p>
+        <p>or the center to zoom out 🔍➖.</p>
     </div>
     <div id="sunburst" class="right"></div>
 </main>
@@ -198,7 +200,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: left;
         box-sizing: border-box;
         margin: 5%;
     }
@@ -229,6 +231,8 @@
         font-family: "Roboto", sans-serif;
         font-size: 1.2em;
         color: #666;
+        text-align: left;
+        margin-bottom: 1%;
     }
 
     @media (max-width: 768px) {
