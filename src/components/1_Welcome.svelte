@@ -56,13 +56,21 @@
 <main>
     <div class="content">
         <h1>Which Country has the Most Diverse Unicorns?</h1>
-        <h2>Assessing the Industrial Variety in Startups Valued Over One Billion Dollars Across Nations</h2>
+        <h2>
+            Assessing the Industrial Variety in Startups Valued Over One Billion
+            Dollars Across Nations with More Than Five Unicorns
+        </h2>
         <p>
-            Explore the factors that contribute to a startup becoming a unicorn.
-            This website provides insights and data on the most successful
-            unicorns in the world on features like <strong
+            In the modern world, a balanced industrial structure ensures
+            economic stability and promotes social equity. Therefore, this
+            analysis explores which country is the most balanced in terms of
+            their industry proportions.
+
+            <!-- Explore the factors that contribute to a startup
+            becoming a unicorn. This website provides insights and data on the
+            most successful unicorns in the world on features like <strong
                 >country, valuation, industry and more</strong
-            >.
+            >. -->
         </p>
     </div>
     <svg id="emojiCanvas"></svg>
