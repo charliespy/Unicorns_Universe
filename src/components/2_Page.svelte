@@ -131,6 +131,7 @@
 
   .chart-container {
       width: 60%;
+      margin-right: 5%;
   }
 
   /* Add responsiveness */
