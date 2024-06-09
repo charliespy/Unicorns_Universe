@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import * as d3 from "d3";
 
-    let emojis = ["🦄", "🌍", "💡", "📈", "💰", "🚀", "🎉", "🏆"];
+    let emojis = ["🦄", "🌍", "💡", "📈", "💰", "🚀", "🏆", "💼", ];
     let width = window.innerWidth;
     let height = window.innerHeight;
 
@@ -62,15 +62,12 @@
         </h2>
         <p>
             In the modern world, a balanced industrial structure ensures
-            economic stability and promotes social equity. Therefore, this
-            analysis explores which country is the most balanced in terms of
-            their industry proportions.
-
-            <!-- Explore the factors that contribute to a startup
-            becoming a unicorn. This website provides insights and data on the
-            most successful unicorns in the world on features like <strong
-                >country, valuation, industry and more</strong
-            >. -->
+            economic stability and promotes social equity.
+        </p>
+        <br>
+        <p>
+            This analysis investigates which country has the most balanced industry
+            distribution among its unicorn companies, using <strong>two different methods</strong>.
         </p>
     </div>
     <svg id="emojiCanvas"></svg>
