@@ -36,7 +36,11 @@
           .padding(0.1);
 
       svg.append("g")
-          .call(d3.axisLeft(y));
+          .call(d3.axisLeft(y))
+          .selectAll("text")
+          .attr("font-weight", d => d === "France" || d === "Switzerland" ? "bold" : "normal")
+          .attr("fill", d => d === "France" || d === "Switzerland" ? "black" : "black")
+          .attr("font-size", d => d === "France" || d === "Switzerland" ? "14px" : "12px");
 
       const x = d3.scaleLinear()
           .range([0, width])
