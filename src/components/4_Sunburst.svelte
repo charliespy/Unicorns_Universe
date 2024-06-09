@@ -70,15 +70,33 @@
                     .join("/")}\n${format(d.value)}`,
         );
 
-        const label = svg
+        const labelGroup = svg
             .append("g")
             .attr("pointer-events", "none")
             .attr("text-anchor", "middle")
-            .style("user-select", "none")
+            .style("user-select", "none");
+
+        const labelOutline = labelGroup
             .selectAll("text")
             .data(root.descendants().slice(1))
             .join("text")
+            .attr("class", "label-outline")
             .attr("dy", "0.35em")
+            .attr("stroke", "white")
+            .attr("stroke-width", 3)
+            .attr("stroke-linejoin", "round")
+            .attr("fill", "none")
+            .attr("stroke-opacity", (d) => +labelVisible(d.current)) 
+            .attr("transform", (d) => labelTransform(d.current))
+            .text((d) => d.data.name);
+
+        const labelText = labelGroup
+            .selectAll("text.text")
+            .data(root.descendants().slice(1))
+            .join("text")
+            .attr("class", "label-text")
+            .attr("dy", "0.35em")
+            .attr("fill", "black")
             .attr("fill-opacity", (d) => +labelVisible(d.current))
             .attr("transform", (d) => labelTransform(d.current))
             .text((d) => d.data.name);
@@ -137,7 +155,18 @@
                 )
                 .attrTween("d", (d) => () => arc(d.current));
 
-            label
+            labelOutline
+                .filter(function (d) {
+                    return (
+                        +this.getAttribute("stroke-opacity") ||
+                        labelVisible(d.target)
+                    );
+                })
+                .transition(t)
+                .attr("stroke-opacity", (d) => +labelVisible(d.target))
+                .attrTween("transform", (d) => () => labelTransform(d.current));
+
+            labelText
                 .filter(function (d) {
                     return (
                         +this.getAttribute("fill-opacity") ||
@@ -155,7 +184,7 @@
 
         function labelVisible(d) {
             return (
-                d.y1 <= 3 && d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.03
+                d.y1 <= 3 && d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.07
             );
         }
 
