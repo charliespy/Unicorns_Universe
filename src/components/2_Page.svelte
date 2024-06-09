@@ -103,8 +103,8 @@
       <div class="text-container">
           <h1>Percentage Distribution of Unicorn Industries 🌍</h1>
           <p>This graph shows the percentage distribution of different industries within each country with <strong>more than 5 unicorns</strong>. The countries are ordered by the percentage of their most dominant industry, with the smallest dominant industry on top.</p>
-          <p>Hover over the bars to see the industry names.</p>
-          <h2>France 🇫🇷 is the most diverse country, while Switzerland 🇨🇭 is the most homogeneous country for industry distribution of unicorns.</h2>
+          <p><strong>Hover over the bars</strong> to see the industry names and their corresponding percentages.</p>
+          <h2>For industry distribution of unicorns, France 🇫🇷 is the most diverse country, while Switzerland 🇨🇭 is the most homogeneous country.</h2>
         </div>
       <div id="chart" class="chart-container"></div>
       <div id="tooltip" class="tooltip"></div>
